@@ -1,4 +1,4 @@
-# Repli-seq Data Analysis Pipeline
+# MCB Repli-seq Data Analysis Pipeline
 This repository contains a suite of scripts for the processing and analysis of Repli-seq data. The workflow is adapted and modified from the protocols established by Miura et al., Nature Protocols 2020.
 
 Original Source: [kuzobuta/scRepliseq-Pipeline](https://github.com/kuzobuta/scRepliseq-Pipeline)
