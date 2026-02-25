@@ -7,7 +7,9 @@
 - Docker → runs R and pipeline scripts in a consistent environment
 
 ---
-**Example: MacBook Pro 2023 with Apple M2 Max chip**
+**Example: MacBook Pro 2023 with Apple M2 Max chip**  
+macOS Ventura 13.2.1
+Memory 96 GB
 
 ## 1. Install Miniconda3
 
