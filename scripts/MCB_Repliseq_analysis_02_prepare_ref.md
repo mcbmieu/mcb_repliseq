@@ -1,7 +1,7 @@
 # MCB Repli-seq analysis: (2) Prepare Reference Genome and Blacklist
 **Date:** 2026-02-16  
 **Source:** Adapted from Miura et al. (2020)
-**Main tasks:**
+**Main tasks:**   
 - Prepare reference genome → Here, example is for mm9
 - Prepare blacklist → Here, example is for mm9
 
