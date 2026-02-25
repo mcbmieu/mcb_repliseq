@@ -129,5 +129,10 @@ docker build --platform linux/amd64 --progress=plain -t mcbrepliseq:v1 . 2>&1 | 
 docker run --platform linux/amd64 -it mcbrepliseq:v1 R --version
 ```
 
-R 3.4.4 version should appear
+The following messeges should be appeared
+```
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+```
      
