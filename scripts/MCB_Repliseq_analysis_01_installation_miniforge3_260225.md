@@ -36,10 +36,14 @@ curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mi
 
 # In our case: 
 # MD5 (Miniforge3-Darwin-x86_64.sh) = 00f112fe19207cbec0297ee0b6fa51c6 # for MacBook Pro 2019 with Intel chip
-# MD5 (Miniforge3-Darwin-arm64.sh) =  # for MacBook Pro 2023 with Apple M2 Max chip
+# MD5 (Miniforge3-Darwin-arm64.sh) = 7c59e2e520813fa2d4bcdefe2ad7bc03 # for MacBook Pro 2023 with Apple M2 Max chip
 
 # 4. Install
+# For intel mac
 bash Miniforge3-Darwin-x86_64.sh
+
+# For M-chip mac
+bash Miniforge3-Darwin-arm64.sh
 
 # 5. Check conda version
 conda -V
