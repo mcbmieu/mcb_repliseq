@@ -120,6 +120,7 @@ mkdir -p ~/Programs/repliseq_pipelines
 cd ~/Programs/repliseq_pipelines
 git clone https://github.com/mcbmieu/mcb_repliseq.git
 cd mcb_repliseq/
+cd Docker
 
 # 3. Build image (Intel or M-series Mac)
 docker build --platform linux/amd64 --progress=plain -t mcbrepliseq:v1 . 2>&1 | tee build_log.txt
