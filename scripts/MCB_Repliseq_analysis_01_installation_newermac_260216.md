@@ -1,4 +1,4 @@
-# MCB Repli-seq analysis: (1) Program Installation for newer mac that can run docker
+# MCB Repli-seq analysis: (1.1) Program Installation for newer mac that can run docker
 **Date:** 2026-02-16  
 **Source:** Adapted from Miura et al. (2020)   
 **Main installations:**
