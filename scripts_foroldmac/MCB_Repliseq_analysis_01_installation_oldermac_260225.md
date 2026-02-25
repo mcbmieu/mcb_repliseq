@@ -1,4 +1,4 @@
-# MCB Repli-seq analysis: (1) Program Installation for old mac (intel)
+# MCB Repli-seq analysis: (1) Program Installation for old mac that cannot run docker
 **Date:** 2026-02-25  
 **Source:** Adapted from Miura et al. (2020)  
 **Main installations:**
