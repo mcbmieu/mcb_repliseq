@@ -1,6 +1,6 @@
 # MCB Repli-seq analysis: (3) scRepli-seq Processing Pipeline
-**Date:** 2026-02-25
-**Source:** Adapted from Miura et al. (2020)  
+**Date:** 2026-02-25   
+**Source:** Adapted from Miura et al. (2020)     
 **Environment:** `mcbrepliseq` (Conda) + `mcbrepliseq:v1` (Docker)
 
 This guide details the workflow for analyzing scRepli-seq data, from raw FASTQ files to binarized replication profiles.
