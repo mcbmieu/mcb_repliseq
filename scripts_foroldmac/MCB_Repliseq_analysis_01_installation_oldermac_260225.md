@@ -26,8 +26,8 @@ In our case, we downloaded and install `Miniforge3-Darwin-x86_64.sh` from https:
 cd
 
 # 2. Make folder for Miniforge3
-mkdir -p ~/miniforge3
-cd ~/miniforge3
+mkdir -p ~/programs
+cd ~/programs
 
 # 3. Download compatible miniforge from https://conda-forge.org/download/
 curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
@@ -38,7 +38,9 @@ curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mi
 # 4. Install
 bash Miniforge3-Darwin-x86_64.sh
 
-# 5. Check conda version
+# 5. Close and open terminal to activate conda
+# Here (base) should appear
+# Check conda version
 conda -V
 # conda 26.1.0
 
