@@ -11,7 +11,12 @@ These scripts are designed for scRepli-seq and BrdU-IP Repli-seq libraries prepa
 ## Key modification points
 This version introduces the following updates:
 
-1. Environment: Uses Miniconda3 for easier installation of genomic tools in new Mac
-2. Containerization: Uses Docker only to run AneuFinder v1.2.1 to resolve R dependency conflicts
+1. Environment management  
+Uses Miniforge for simplified installation and management of genomic analysis tools.
 
+3. Containerization (Docker support)  
+On macOS systems that support Docker, AneuFinder v1.2.1 is executed within a Docker container to resolve R dependency conflicts.
+
+4. Local R (non-Docker systems)  
+For macOS systems that cannot run Docker, an older compatible version of R and required packages are installed locally to support AneuFinder v1.2.1.
 
