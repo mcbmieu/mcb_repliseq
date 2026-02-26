@@ -69,6 +69,17 @@ picard=2.27.5 \
 bedtools=2.31.1 \
 trim-galore=0.6.10
 ```
+To avoid disrupting `mcbrepliseq` environment, we installed SRA-tools in a separate enviroment.
+
+```bash
+# 1. Create the environment named `sratools`
+conda create -y -n sratools
+conda activate sratools
+
+# 2. Install sra-tools using mamba
+conda install sra-tools
+```
+
 ---
 
 ## 3. Install Homebrew
