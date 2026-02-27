@@ -157,7 +157,7 @@ window=200000
 sliding=40000
 
 # Execute R scripts
-util=~/Programs/repliseq_pipelines/util
+util=~/Programs/repliseq_pipelines/mcb_repliseq/Docker/util
 /usr/local/bin/Rscript --vanilla \
     ${util}/mcb_BrdUIP_Repliseq_from_bam_input.r \
     ${result_dir}/bam/${bam_E} \
