@@ -5,15 +5,7 @@
 
 ---
 
-## 1. Environment & Data Acquisition
-First, we activate the environment and download the example mESC dataset from SRA.
-
-```bash
-# Activate environment
-conda activate mcbrepliseq
-```
-
-## 2. Generate directory for results
+## 1. Generate directory for results
 This ensures all output subdirectories are ready before the loops begin.
 
 ```bash
@@ -24,10 +16,13 @@ result_dir="~/Documents/result_dir"
 mkdir -p ${result_dir}/{fastqc,trim_fastq,bam,BrdUIP}
 ```
 
-## 3. Prepare fastq data
+## 2. Data Preparation
 ### [Option 1] If using example data
 
 ```bash
+# Activate environment
+conda activate sratools
+
 # Access fastq Directory
 cd ${result_dir}/fastq
 
@@ -50,6 +45,16 @@ gzip *.fastq
 #[source_directory]: The full path to the folder you want to copy
 cp -r $source_directory ${result_dir}/fastq
 ```
+---
+
+## 3. Environment Preparation
+We have to activate the environment for Repli-seq analysis.
+
+```bash
+# Activate environment
+conda activate mcbrepliseq
+```
+---
 
 ## 4. Adapter Removal & SEQXE Filtering
 We use `trim_galore` for standard adapters, followed by `cutadapt` to remove specific SEQXE sequences.
