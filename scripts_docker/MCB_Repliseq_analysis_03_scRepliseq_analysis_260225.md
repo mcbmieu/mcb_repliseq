@@ -30,7 +30,9 @@ mkdir -p $result_dir/Aneu_analysis/HMM/{1-somy/{Rdata,binary,plot},2-somy/{Rdata
 - If needed, below are the example mouse neural stem cell scRepli-seq dataset from SRA.
 
     ```bash
+    # Activate sratools environment
     conda activate sratools
+    
     # WT JB4/EI7HZ2 NSCs G1 cells: 001,002,003,004
     fasterq-dump --progress SRR21129217   
     fasterq-dump --progress SRR21129216
