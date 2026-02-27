@@ -7,18 +7,14 @@ This guide details the workflow for analyzing scRepli-seq data, from raw FASTQ f
 
 ---
 
-## 1. Actiate Environment & Prepare Directory Structure
+## 1. Prepare Directory Structure
 First, we activate the environment and download the example mESC dataset from SRA.
 
 ```bash
-# 1. Activate environment
-conda activate mcbrepliseq
-
-
-# 2. Define your base results directory
+# 1. Define your base results directory
 result_dir="~/Documents/result_dir"
 
-# 3. Create the full directory tree at once
+# 2. Create the full directory tree at once
 mkdir -p $result_dir/{fastq,fastqc,trim_fastq,bam,logs}
 mkdir -p $result_dir/Aneu_analysis/{MAD_score,Log2_Med,bins,fragment,G1_control}
 mkdir -p $result_dir/Aneu_analysis/HMM/{1-somy/{Rdata,binary,plot},2-somy/{Rdata,binary,plot},repliscores}
@@ -26,7 +22,7 @@ mkdir -p $result_dir/Aneu_analysis/HMM/{1-somy/{Rdata,binary,plot},2-somy/{Rdata
 
 ---
 
-## 2. Data Preparation
+## 2. Data and Enviroment Preparation
 - Move your raw `.fastq.gz` files into ${result_dir}/fastq
 
 - Note: If your files use a different extension (e.g., .fq.gz), update scripts as neccessary
@@ -34,6 +30,7 @@ mkdir -p $result_dir/Aneu_analysis/HMM/{1-somy/{Rdata,binary,plot},2-somy/{Rdata
 - If needed, below are the example mouse neural stem cell scRepli-seq dataset from SRA.
 
     ```bash
+    conda activate sratools
     # WT JB4/EI7HZ2 NSCs G1 cells: 001,002,003,004
     fasterq-dump --progress SRR21129217   
     fasterq-dump --progress SRR21129216
@@ -61,10 +58,16 @@ mkdir -p $result_dir/Aneu_analysis/HMM/{1-somy/{Rdata,binary,plot},2-somy/{Rdata
     # gz these files
     gzip *.fastq
     ```
+    
+## Before running the next step, activate `mcbrepliseq` environment
+
+```bash
+conda activate mcbrepliseq
+```
+
 ---
 
 ## 3. Check fastq files using `fastqc`
-Check quality of fastq files and remove one with low quality.
 
 ```bash
 fastqc $result_dir/fastq/*.fastq.gz -o $result_dir/fastqc/
