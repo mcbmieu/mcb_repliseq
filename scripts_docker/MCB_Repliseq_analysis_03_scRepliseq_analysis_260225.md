@@ -8,7 +8,6 @@ This guide details the workflow for analyzing scRepli-seq data, from raw FASTQ f
 ---
 
 ## 1. Prepare Directory Structure
-First, we activate the environment and download the example mESC dataset from SRA.
 
 ```bash
 # 1. Define your base results directory
@@ -22,60 +21,78 @@ mkdir -p $result_dir/Aneu_analysis/HMM/{1-somy/{Rdata,binary,plot},2-somy/{Rdata
 
 ---
 
-## 2. Data and Enviroment Preparation
-- Move your raw `.fastq.gz` files into ${result_dir}/fastq
+## 2. Data Preparation 
+### [Option 1: using example data]
+If needed, below are the example mouse neural stem cell scRepli-seq dataset from SRA.  
+Here, you have to first activate sra-tools environment
 
-- Note: If your files use a different extension (e.g., .fq.gz), update scripts as neccessary
+```bash
+# 1. Activate environment
+conda activate sratools
+```
 
-- If needed, below are the example mouse neural stem cell scRepli-seq dataset from SRA.
+Next, download the following data:
 
-    ```bash
-    # Activate sratools environment
-    conda activate sratools
-    
-    # WT JB4/EI7HZ2 NSCs G1 cells: 001,002,003,004
-    fasterq-dump --progress SRR21129217   
-    fasterq-dump --progress SRR21129216
-    fasterq-dump --progress SRR21129215
-    fasterq-dump --progress SRR21129214
+```bash   
+# 1. Go to fastq folder
+cd $result_dir/{fastq}
 
-    # WT JB4/EI7HZ2 NSCs S cells: S 030, S 031
-    fasterq-dump --progress SRR21129167
-    fasterq-dump --progress SRR21129168
+# 2. Download WT JB4/EI7HZ2 NSCs G1 cells: 001,002,003,004
+fasterq-dump --progress SRR21129217   
+fasterq-dump --progress SRR21129216
+fasterq-dump --progress SRR21129215
+fasterq-dump --progress SRR21129214
 
-    # Count reads per file
+# 3. Download WT JB4/EI7HZ2 NSCs S cells: S 030, S 031
+fasterq-dump --progress SRR21129167
+fasterq-dump --progress SRR21129168
+
+# 4. Count reads per file
     for file in *.fastq; do
         echo -n "$file: "
         echo "$(cat "$file" | wc -l) / 4" | bc
     done
 
-    # Output
-    SRR21129167.fastq.gz: 3328320
-    SRR21129168.fastq.gz: 3396396
-    SRR21129214.fastq.gz: 3681502
-    SRR21129215.fastq.gz: 3404804
-    SRR21129216.fastq.gz: 4450316
-    SRR21129217.fastq.gz: 3659944
+# Output should look like this
+#SRR21129167.fastq.gz: 3328320
+#SRR21129168.fastq.gz: 3396396
+#SRR21129214.fastq.gz: 3681502
+#SRR21129215.fastq.gz: 3404804
+#SRR21129216.fastq.gz: 4450316
+#SRR21129217.fastq.gz: 3659944
 
-    # gz these files
-    gzip *.fastq
-    ```
-    
-## Before running the next step, activate `mcbrepliseq` environment
+# 5. gz these files
+gzip *.fastq
+```
+
+### [Option 2: use your own data]
+- Move your raw `.fastq.gz` files into `${result_dir}/fastq`  
+- Note: If your files use a different extension (e.g., .fq.gz), update scripts as neccessary
+
+---
+
+## 3. Activate `mcbrepliseq` environment
 
 ```bash
+# 1. If you were in sratools environment, deactivate it first. If not, you can skip this step.
+conda deactivate sratools
+
+# 2. Activate mcbrepliseq environment
 conda activate mcbrepliseq
 ```
 
 ---
 
-## 3. Check fastq files using `fastqc`
+
+## 4. Check fastq files using `fastqc`
+Check quality of fastq files and remove one with low quality.
 
 ```bash
 fastqc $result_dir/fastq/*.fastq.gz -o $result_dir/fastqc/
 ```
 ---
-## 4. Adapter Removal & SEQXE Filtering
+
+## 5. Adapter Removal & SEQXE Filtering
 We use `trim_galore` for standard adapters, followed by `cutadapt` to remove specific SEQXE sequences.
 
 ```bash
@@ -107,7 +124,7 @@ for file in ${fastq_dir}/*.fastq.gz; do
 done
 ```
 
-## 5. Alignment and BAM Processing
+## 6. Alignment and BAM Processing
 We align to the reference genome using `bwa`, then clean and mark duplicates using `Picard`.
 
 ```bash
@@ -150,7 +167,7 @@ done
 ```
 
 
-## 6. Load mapped reads and stored in Rdata format by AneuFinder v1.2.1
+## 7. Load mapped reads and stored in Rdata format by AneuFinder v1.2.1
 
 Here we will use docker image. This script will generate Rdata files saved in
 -`${result_dir}/Aneu_analysis/bins` 
@@ -205,7 +222,7 @@ done
 
 ---
 
-## 7. Calculate MAD scores
+## 8. Calculate MAD scores
 Here we will use docker image. This script will generate a txt file saved in
 -`${result_dir}/Aneu_analysis/MAD_score` 
 
@@ -228,7 +245,7 @@ docker run --rm -it \
 
 ---
 
-## 8. Check karyotype of G1 cells
+## 9. Check karyotype of G1 cells
 Here we will use docker image. This script will generate Rdata and pdf files saved in
 -`${result_dir}/Aneu_analysis/G1_control` 
 
@@ -262,7 +279,7 @@ done
 ---
 
 
-## 9. Merged G1 cells that show good karyotypes
+## 10. Merged G1 cells that show good karyotypes
 Here we will use docker image. This script will generate a Rdata file and saved in
 -`${result_dir}/Aneu_analysis/G1_control` 
 
@@ -295,7 +312,7 @@ docker run --rm -it \
 ```
 ---
 
-## 10. Compute log2median replication timing scores
+## 11. Compute log2median replication timing scores
 Here we will use docker image. This script will generate bedGraph files and saved in
 -`${result_dir}/Aneu_analysis/Log2_Med` 
 
@@ -326,7 +343,7 @@ done
 ```
 ---
 
-## 11. Binarization
+## 12. Binarization
 Here we will use docker image. This script will generate bedGraph files and saved in
 -`${result_dir}/Aneu_analysis/HMM` depending on mode you selected
 
