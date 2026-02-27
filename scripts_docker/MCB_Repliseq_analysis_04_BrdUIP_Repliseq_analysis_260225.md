@@ -5,38 +5,45 @@
 
 ---
 
-## 1. Generate directory for results
-This ensures all output subdirectories are ready before the loops begin.
+## 1. Prepare Directory Structure
 
 ```bash
-# Specify where to export your results
+# 1. Define your base results directory
 result_dir="~/Documents/result_dir"
 
-# Copy and paste
+# 2. Create the full directory tree at once
 mkdir -p ${result_dir}/{fastqc,trim_fastq,bam,BrdUIP}
 ```
+---
 
-## 2. Data Preparation
-### [Option 1] If using example data
+## 2. Data Preparation 
+### [Option 1: using example data]
+If needed, below are the example mouse embryonic stem cell BrdU-IP Repli-seq dataset from SRA.  
+Here, you have to first activate sra-tools environment
 
 ```bash
-# Activate environment
+# 1. Activate environment
 conda activate sratools
+```
 
-# Access fastq Directory
-cd ${result_dir}/fastq
+Next, download the following data:
 
-# Download example data: WT JB4 mESCs Early (SRR21125046) and Late (SRR21125045) Rep1
+
+```bash
+# 1. Go to fastq folder
+cd $result_dir/{fastq}
+
+# 2. Download example data: WT JB4 mESCs Early (SRR21125046) and Late (SRR21125045) Rep1
 fasterq-dump --progress SRR21125046
 fasterq-dump --progress SRR21125045
 
-# Verify read counts
+# 3. Verify read counts
 for file in *.fastq; do
     echo -n "$file: "
     echo "$(cat "$file" | wc -l) / 4" | bc
 done
 
-# Compress files
+# 4. Compress files
 gzip *.fastq
 ```
 ### [Option 2] If using your own data, copy and paste them to `fastq` folder
@@ -45,13 +52,14 @@ gzip *.fastq
 #[source_directory]: The full path to the folder you want to copy
 cp -r $source_directory ${result_dir}/fastq
 ```
----
 
-## 3. Environment Preparation
-We have to activate the environment for Repli-seq analysis.
+## 3. Activate `mcbrepliseq` environment
 
 ```bash
-# Activate environment
+# 1. If you were in sratools environment, deactivate it first. If not, you can skip this step.
+conda deactivate sratools
+
+# 2. Activate mcbrepliseq environment
 conda activate mcbrepliseq
 ```
 ---
