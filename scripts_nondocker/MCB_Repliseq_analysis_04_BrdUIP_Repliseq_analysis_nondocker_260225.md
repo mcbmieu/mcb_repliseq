@@ -9,7 +9,7 @@
 
 ```bash
 # 1. Define your base results directory
-result_dir="~/Documents/result_dir"
+result_dir=~/Documents/result_dir
 
 # 2. Create the full directory tree at once
 mkdir -p ${result_dir}/{fastqc,trim_fastq,bam,BrdUIP}
@@ -101,7 +101,7 @@ We align to the reference genome using BWA, then clean and mark duplicates using
 
 ```bash
 # 1. Set paths
-index="~/Documents/references/mm9/mm9.fa.gz"
+index=~/Documents/references/mm9/mm9.fa.gz
 genome="mm9"
 THREAD=4
 
