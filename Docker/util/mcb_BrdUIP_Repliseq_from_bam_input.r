@@ -32,7 +32,7 @@
 #4. Filtering the E/(E+L) score by <= 5% percentile of (E rpm + L rpm)
 
 library("AneuFinder")
-library("zoo")
+#library("zoo")
 library("pracma")
 
 args = commandArgs(TRUE)
