@@ -11,7 +11,7 @@ This guide details the workflow for analyzing scRepli-seq data, from raw FASTQ f
 
 ```bash
 # 1. Define your base results directory
-result_dir="~/Documents/result_dir"
+result_dir=~/Documents/result_dir
 
 # 2. Create the full directory tree at once
 mkdir -p $result_dir/{fastq,fastqc,trim_fastq,bam,logs}
@@ -129,7 +129,7 @@ We align to the reference genome using `bwa`, then clean and mark duplicates usi
 
 ```bash
 # 1. Set paths
-index="~/Documents/references/mm9/mm9.fa.gz"
+index=~/Documents/references/mm9/mm9.fa.gz
 genome="mm9"
 THREAD=4
 
@@ -175,9 +175,9 @@ Here we will use docker image. This script will generate Rdata files saved in
 
 ```bash
 # 1. Set paths
-reference_dir="~/Documents/references/mm9" # Location of genome reference files
+reference_dir=~/Documents/references/mm9 # Location of genome reference files
 chrsize="mm9.chrom.sizes.clean.sort" # Name of Chromosome Size File 
-blacklist_dir="~/Documents/references/blacklist" # Location of the blacklist file 
+blacklist_dir=~/Documents/references/blacklist # Location of the blacklist file 
 blacklist="mm9-blacklist-v1_id.bed" # Name of blacklist file
 
 
