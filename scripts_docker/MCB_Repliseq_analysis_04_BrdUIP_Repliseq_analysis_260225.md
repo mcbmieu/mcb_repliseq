@@ -57,7 +57,7 @@ cp -r $source_directory ${result_dir}/fastq
 
 ```bash
 # 1. If you were in sratools environment, deactivate it first. If not, you can skip this step.
-conda deactivate sratools
+conda deactivate
 
 # 2. Activate mcbrepliseq environment
 conda activate mcbrepliseq
