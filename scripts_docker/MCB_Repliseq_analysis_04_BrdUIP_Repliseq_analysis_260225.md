@@ -101,7 +101,7 @@ We align to the reference genome using BWA, then clean and mark duplicates using
 
 ```bash
 # 1. Set paths
-index="~/Documents/references/mm9/mm9.fa.gz"
+index=~/Documents/references/mm9/mm9.fa.gz
 genome="mm9"
 THREAD=4
 
@@ -149,10 +149,10 @@ black=/black
 
 # Here you have to set your own parameters
 # Configuration Paths
-reference_dir="~/Documents/references/mm9" # Location of genome reference files
+reference_dir=~/Documents/references/mm9 # Location of genome reference files
 chrsize="mm9.chrom.sizes.clean.sort" # Name of Chromosome Size File 
 
-blacklist_dir="~/Documents/references/blacklist" # Location of the blacklist file
+blacklist_dir=~/Documents/references/blacklist # Location of the blacklist file
 blacklist="mm9-blacklist-v1_id.bed" # Name of blacklist file
 
 
