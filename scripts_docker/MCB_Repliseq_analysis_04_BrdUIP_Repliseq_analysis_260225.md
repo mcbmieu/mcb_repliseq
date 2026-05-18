@@ -9,7 +9,7 @@
 
 ```bash
 # 1. Define your base results directory
-result_dir="~/Documents/result_dir"
+result_dir=~/Documents/result_dir
 
 # 2. Create the full directory tree at once
 mkdir -p ${result_dir}/{fastqc,trim_fastq,bam,BrdUIP}
